@@ -1,0 +1,7 @@
+# http://lxr.free-electrons.com/source/Documentation/kbuild/modules.txt
+obj-m = soft_pwm.o
+
+KERNEL_BUILD = /lib/modules/$(shell uname -r)/build
+
+all:
+	make -C $(KERNEL_BUILD) M=$(PWD) modules
