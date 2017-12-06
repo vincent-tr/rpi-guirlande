@@ -42,7 +42,7 @@ build() {
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/lib" "$pkgdir/usr/sbin"
+  install -dm755 "$pkgdir/usr/lib" "$pkgdir/usr/sbin" "$pkgdir/etc/init.d"
   install -m644 "$builddir/soft_pwm.$kernelversion-rpi2.ko" "$pkgdir/usr/lib"
   install -m644 "$builddir/soft_pwm.$kernelversion-rpi.ko" "$pkgdir/usr/lib"
   install -m755 "$builddir/guirlande-service" "$pkgdir/usr/sbin/guirlande-service"
