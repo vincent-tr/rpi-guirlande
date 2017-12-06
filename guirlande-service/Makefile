@@ -1,16 +1,18 @@
-SHELL   = /bin/sh
-CC      = gcc
-FLAGS   = -std=c99
-CFLAGS  = -pedantic -Wall -Wextra
-TARGET  = guirlande-service
-SOURCES = $(shell echo *.c)
-HEADERS = $(shell echo *.h)
-OBJECTS = $(SOURCES:.c=.o)
+PIGPIO_DIR = ../../pigpio
+SHELL      = /bin/sh
+CC         = gcc
+FLAGS      = -std=c99
+CFLAGS     = -pedantic -Wall -Wextra -I$(PIGPIO_DIR)
+LDFLAGS    = -L$(PIGPIO_DIR) -lpigpio -pthread -lrt
+TARGET     = guirlande-service
+SOURCES    = $(shell echo *.c)
+HEADERS    = $(shell echo *.h)
+OBJECTS    = $(SOURCES:.c=.o)
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(FLAGS) $(CFLAGS) -o $(TARGET) $(OBJECTS)
+	$(CC) $(FLAGS) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
 
 %.o: %.c $(HEADERS) $(COMMON)
 	$(CC) $(FLAGS) $(CFLAGS) -c -o $@ $<
