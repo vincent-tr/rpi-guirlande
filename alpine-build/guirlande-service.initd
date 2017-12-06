@@ -1,11 +1,16 @@
 #!/sbin/openrc-run
 
-name="guirlande-service"
-command="/usr/sbin/$name"
-command_args=""
-
-start_stop_daemon_args="--pidfile /var/run/guirlande-service.pid"
-
-depend() {
+depend()
+{
   need soft-pwm-service
+}
+
+start()
+{
+  /usr/sbin/guirlande-service start
+}
+
+stop()
+{
+  /usr/sbin/guirlande-service stop
 }
