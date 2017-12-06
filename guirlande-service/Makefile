@@ -2,8 +2,8 @@ PIGPIO_DIR = ../../pigpio
 SHELL      = /bin/sh
 CC         = gcc
 FLAGS      = -std=c99
-CFLAGS     = -O3 -pedantic -Wall -Wextra -I$(PIGPIO_DIR)
-LDFLAGS    = -L$(PIGPIO_DIR) -lpigpio -pthread -lrt
+CFLAGS     = -O3 -pedantic -Wall -Wextra
+LDFLAGS    =
 TARGET     = guirlande-service
 SOURCES    = $(shell echo *.c)
 HEADERS    = $(shell echo *.h)
