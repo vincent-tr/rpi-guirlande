@@ -164,7 +164,7 @@ static ssize_t unexport_store(struct class *class, struct class_attribute *attr,
   long gpio;
   int  status;
 
-  status = strict_strtol(buf, 0, &gpio);
+  status = kstrtol(buf, 0, &gpio);
   if(status<0){ goto done; }
 
   status = -EINVAL;
@@ -298,7 +298,6 @@ enum hrtimer_restart soft_pwm_hrtimer_callback(struct hrtimer *timer){
 
 /* module initialization: init the hr-timer and register a driver class */
 static int __init soft_pwm_init(void){
-  struct timespec tp;
 
   int status;
   printk(KERN_INFO "SoftPWM v0.1 initializing.\n");
