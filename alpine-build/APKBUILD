@@ -25,7 +25,7 @@ build() {
   cd "$basedir"
 
   cd soft-pwm
-  akeroot -- apk -p "$tmproot" add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
+  fakeroot -- apk -p "$tmproot" add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
   make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi"
   mv soft_pwm.ko "$builddir/soft_pwm.$kernelversion-rpi.ko"
   make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi" clean
