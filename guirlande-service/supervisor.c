@@ -117,7 +117,7 @@ void setup_current_program() {
     part->next = pgm->first;
     prev = part;
 
-    memcpy(part->states, current_program->states[states_index].state, sizeof(part->states));
+    memcpy(part->states, &(current_program->states[states_index]), sizeof(struct state_def));
 
     out_log("%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i,%i",
       part->states[0],
@@ -139,5 +139,7 @@ void setup_current_program() {
   }
 
   out_log("end of program : %i states", current_program->states_count);
+
+  executor_set(pgm);
 }
 
