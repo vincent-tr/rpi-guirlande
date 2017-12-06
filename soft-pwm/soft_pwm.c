@@ -94,7 +94,7 @@ static ssize_t pwm_store(
     status = -EIO;
   }else{
     unsigned long value;
-    status = strict_strtoul(buf, 0, &value);
+    status = kstrtoul(buf, 0, &value);
     if(status==0){
       if(strcmp(attr->attr.name, "pulse")==0){
         if(value<=desc->period){ desc->pulse = (unsigned int)value; }
@@ -135,7 +135,7 @@ static ssize_t export_store(struct class *class, struct class_attribute *attr, c
   long gpio;
   int  status;
 
-  status = strict_strtol(buf, 0, &gpio);
+  status = kstrtol(buf, 0, &gpio);
   if(status<0){ goto done; }
 
   status = gpio_request(gpio, "soft_pwm");
@@ -302,9 +302,6 @@ static int __init soft_pwm_init(void){
 
   int status;
   printk(KERN_INFO "SoftPWM v0.1 initializing.\n");
-
-  hrtimer_get_res(CLOCK_MONOTONIC, &tp);
-  printk(KERN_INFO "Clock resolution is %ldns\n", tp.tv_nsec);
 
   hrtimer_init(&hr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
   hr_timer.function = &soft_pwm_hrtimer_callback;
