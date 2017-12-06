@@ -30,7 +30,7 @@ static struct program_def *current_program;
 static struct program_def *last_program; // while init
 
 static void init_program_list();
-static void register_program(const char *name, const char *description, size_t count, struct state_def states[]);
+static void register_program(const char *name, const char *description, size_t count, const struct state_def states[]);
 static void next_program();
 static void setup_current_program();
 
