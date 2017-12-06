@@ -12,7 +12,7 @@ OBJECTS    = $(SOURCES:.c=.o)
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	$(CC) $(FLAGS) $(LDFLAGS) -o $(TARGET) $(OBJECTS)
+	$(CC) $(FLAGS) -o $(TARGET) $(OBJECTS) $(LDFLAGS)
 
 %.o: %.c $(HEADERS) $(COMMON)
 	$(CC) $(FLAGS) $(CFLAGS) -c -o $@ $<
