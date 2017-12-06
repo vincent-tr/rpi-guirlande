@@ -14,10 +14,12 @@ su - builder
 # restore ~/.abuild
 mkdir .abuild
 scp root@arch-desktop:/home/builder/raspberrypi/image-builder/abuild/* .abuild
+
 git clone https://github.com/vincent-tr/rpi-guirlande
 cd rpi-guirlande/alpine-build
 abuild checksum
 abuild -r
+
 # move package on arch-desktop
 # on builder@arch-desktop
 scp root@<target>:/home/builder/packages/rpi-guirlande/armhf/guirlande-1.0.0-r0.apk /home/builder/raspberrypi/image-builder/alpine-packages/armhf
