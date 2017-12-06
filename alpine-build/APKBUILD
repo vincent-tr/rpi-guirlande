@@ -1,0 +1,24 @@
+# Maintainer: Vincent Trumpff <vincent.tr@gmail.com>
+
+pkgname=guirlande
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="Guirlande"
+arch="all"
+url="https://github.com/vincent-tr/rpi-guirlande"
+license="LGPL3"
+depends="musl"
+source="../guirlande-service ../soft-pwm"
+install=""
+builddir=""
+
+prepare() {
+  default_prepare
+}
+
+build() {
+  make
+}
+
+package() {
+}
