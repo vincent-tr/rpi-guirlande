@@ -1,5 +1,3 @@
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wgnu-compound-literal-initializer"
 
 void init_program_list() {
   REGISTER_PROGRAM("Off", "Toutes les lumières sont éteintes", ((struct state_def[]) {
@@ -528,5 +526,3 @@ void init_program_list() {
     { .state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 } }
   }));
 }
-
-#pragma GCC diagnostic pop
