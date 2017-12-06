@@ -2,27 +2,27 @@
 #pragma GCC diagnostic ignored "-Wgnu-compound-literal-initializer"
 
 void init_program_list() {
-  REGISTER_PROGRAM("Off", "Toutes les lumières sont éteintes", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Off", "Toutes les lumières sont éteintes", ((struct state_def[]) {
     { .state = { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 } }
   }));
 
-  REGISTER_PROGRAM("On", "Toutes les lumieres sont allumees", ((const struct state_def[]) {
+  REGISTER_PROGRAM("On", "Toutes les lumieres sont allumees", ((struct state_def[]) {
     { .state = { 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100 } }
   }));
 
-  REGISTER_PROGRAM("On-1", "Toutes les lumieres sont allumees faiblement", ((const struct state_def[]) {
+  REGISTER_PROGRAM("On-1", "Toutes les lumieres sont allumees faiblement", ((struct state_def[]) {
     { .state = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 } }
   }));
 
-  REGISTER_PROGRAM("Bleu", "Toutes les lumieres bleues sont allumees", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Bleu", "Toutes les lumieres bleues sont allumees", ((struct state_def[]) {
     { .state = { 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0 } }
   }));
 
-  REGISTER_PROGRAM("Blanc", "Toutes les lumieres blanches sont allumees", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Blanc", "Toutes les lumieres blanches sont allumees", ((struct state_def[]) {
     { .state = { 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100 } }
   }));
 
-  REGISTER_PROGRAM("Clignotement rapide", "Clignotement rapide", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Clignotement rapide", "Clignotement rapide", ((struct state_def[]) {
     { .state = { 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0 } },
     { .state = { 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0 } },
     { .state = { 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0 } },
@@ -31,7 +31,7 @@ void init_program_list() {
     { .state = { 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100 } }
   }));
 
-  REGISTER_PROGRAM("Vague", "Vague", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Vague", "Vague", ((struct state_def[]) {
     { .state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
@@ -82,7 +82,7 @@ void init_program_list() {
     { .state = { 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2 } }
   }));
 
-  REGISTER_PROGRAM("Vague separee", "Vague separee", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Vague separee", "Vague separee", ((struct state_def[]) {
     { .state = { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
@@ -437,7 +437,7 @@ void init_program_list() {
     { .state = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2 } }
   }));
 
-  REGISTER_PROGRAM("Vague separee rapide", "Vague separee rapide", ((const struct state_def[]) {
+  REGISTER_PROGRAM("Vague separee rapide", "Vague separee rapide", ((struct state_def[]) {
     { .state = { 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 5, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
     { .state = { 10, 10, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 } },
