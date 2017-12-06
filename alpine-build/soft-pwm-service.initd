@@ -1,0 +1,16 @@
+#!/sbin/openrc-run
+
+depend()
+{
+  need localmount
+}
+
+start()
+{
+  insmod "/usr/lib/soft_pwm.$(uname -r).ko"
+}
+
+stop()
+{
+  rmmod soft_pwm
+}

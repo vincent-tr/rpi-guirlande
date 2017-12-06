@@ -8,17 +8,45 @@ arch="all"
 url="https://github.com/vincent-tr/rpi-guirlande"
 license="LGPL3"
 depends="musl"
-source="../guirlande-service ../soft-pwm"
+source="soft-pwm-service.initd guirlande-service.initd"
 install=""
-builddir=""
+basedir="$srcdir/../.."
+tmproot="/tmp/root-fs"
+kernelversion=$(uname -r | grep -o '\(\d\+\.\d\+\.\d\+-\d\+\)')
+builddir="$srcdir/build"
 
 prepare() {
   default_prepare
 }
 
 build() {
+  mkdir -p "$builddir"
+
+  cd "$basedir"
+
+  cd soft-pwm
+  apk -p "$tmproot" add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
+  make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi"
+  mv soft_pwm.ko "$builddir/soft_pwm.$kernelversion-rpi.ko"
+  make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi" clean
+  make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi2"
+  mv soft_pwm.ko "$builddir"/soft_pwm.$kernelversion-rpi2.ko"
+  make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi2" clean
+  rm -rf "$tmproot"
+  cd ..
+
+  cd guirlande-service
   make
+  mv guirlande-service "$builddir"
+  make clean
 }
 
 package() {
+  install -dm755 "$pkgdir/usr/lib" "$pkgdir/usr/sbin"
+  install -m644 "$builddir/soft_pwm.$kernelversion-rpi2.ko" "$pkgdir/usr/lib"
+  install -m644 "$builddir/soft_pwm.$kernelversion-rpi.ko" "$pkgdir/usr/lib"
+  install -m755 "$builddir/guirlande-service" "$pkgdir/usr/sbin/guirlande-service"
+
+  install -m755 "$srcdir/guirlande-service.initd" "$pkgdir/etc/init.d/guirlande-service"
+  install -m755 "$srcdir/soft-pwm-service.initd" "$pkgdir/etc/init.d/soft-pwm-service"
 }
