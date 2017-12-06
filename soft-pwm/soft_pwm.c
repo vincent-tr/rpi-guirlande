@@ -221,7 +221,7 @@ int pwm_export(unsigned gpio){
 }
 
 /* Used by pwm_unexport below to find the device which should be freed */
-static int match_export(struct device *dev, void *data){
+static int match_export(struct device *dev, const void *data){
   return dev_get_drvdata(dev) == data;
 }
 
