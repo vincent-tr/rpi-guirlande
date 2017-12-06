@@ -6,7 +6,7 @@
 apk add git make gcc musl-dev
 git clone https://github.com/vincent-tr/rpi-guirlande
 cd rpi-guirlande
-apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
+fakeroot -- apk -p /tmp/root-fs add --initdb --no-scripts --update-cache alpine-base linux-rpi-dev linux-rpi2-dev --arch armhf --keys-dir /etc/apk/keys --repositories-file /etc/apk/repositories
 mkdir build
 cd soft-pwm
 make KERNEL_BUILD=/tmp/root-fs/usr/src/linux-headers-4.9.65-0-rpi
