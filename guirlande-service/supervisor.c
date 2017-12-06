@@ -35,8 +35,7 @@ static void next_program();
 static void setup_current_program();
 
 #define REGISTER_PROGRAM(name, description, states) {                                   \
-  struct state_def _states[] = states;                                                  \
-  register_program(name, description, sizeof(_states) / sizeof((_states)[0]), _states); \
+  register_program(name, description, sizeof(states) / sizeof((states)[0]), states); \
 }
 
 #include "supervisor-programs.h"
