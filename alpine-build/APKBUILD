@@ -30,7 +30,7 @@ build() {
   mv soft_pwm.ko "$builddir/soft_pwm.$kernelversion-rpi.ko"
   make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi" clean
   make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi2"
-  mv soft_pwm.ko "$builddir"/soft_pwm.$kernelversion-rpi2.ko"
+  mv soft_pwm.ko "$builddir/soft_pwm.$kernelversion-rpi2.ko"
   make KERNEL_BUILD="$tmproot/usr/src/linux-headers-$kernelversion-rpi2" clean
   rm -rf "$tmproot"
   cd ..
